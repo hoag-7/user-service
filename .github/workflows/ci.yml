@@ -82,10 +82,7 @@ jobs:
     needs: [build-and-test, contract-guardian-gate]
     # Only build the Docker image on pushes to main/develop (not on PRs).
     # contract-guardian-gate is skipped on push events, so allow 'skipped' as a valid result.
-    if: >-
-      github.event_name == 'push' &&
-      needs.build-and-test.result == 'success' &&
-      (needs.contract-guardian-gate.result == 'success' || needs.contract-guardian-gate.result == 'skipped')
+    if: always() && github.event_name == 'push' && needs.build-and-test.result == 'success' && (needs.contract-guardian-gate.result == 'success' || needs.contract-guardian-gate.result == 'skipped')
 
     steps:
       - name: Checkout
