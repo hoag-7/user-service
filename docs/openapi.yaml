@@ -98,6 +98,17 @@ components:
           type: string
         message:
           type: string
+    PreferencesRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+        emergencyFundMonths:
+          type: integer
+          format: int32
+        monthlySalary:
+          type: number
+          format: double
     PreferencesResponse:
       type: object
       properties:
@@ -124,14 +135,3 @@ components:
           format: date-time
         isFirstTime:
           type: boolean
-    PreferencesRequest:
-      type: object
-      properties:
-        currency:
-          type: string
-        emergencyFundMonths:
-          type: integer
-          format: int32
-        monthlySalary:
-          type: number
-          format: double
